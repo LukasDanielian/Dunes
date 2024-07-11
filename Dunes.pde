@@ -6,7 +6,7 @@ Car car;
 
 void setup()
 {
-  fullScreen(P3D,2);
+  fullScreen(P3D);
   frameRate(300);
   shapeMode(CENTER);
   textAlign(CENTER);
@@ -22,8 +22,8 @@ void setup()
 void draw()
 {
   background(#1BC1BD);
-  lights();
-  ambientLight(200,50,50);
+  //lights();
+  //ambientLight(200,50,50);
   
   car.updateCamera();
   world.render();

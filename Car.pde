@@ -17,14 +17,14 @@ class Car
     points = new PVector[4];
 
     car = loadShape("car.obj");
-    car.scale(.50);
+    car.scale(60);
     car.rotateX(PI);
-    car.rotateY(HALF_PI);
-    car.translate(85, 65, 0);
+    car.rotateY(-HALF_PI);
+    car.translate(90,60,0);
   }
 
   void updateCamera()
-  {
+  {    
     perspective(PI/FOV, float(width)/height, .01, width * 4);
     camera(pos.x - (pointing.x * camDist), pos.y - camDist/2, pos.z + (pointing.y * camDist), pos.x, pos.y, pos.z, 0, 1, 0);
     //camera(pos.x - cos(frameCount * .01) * camDist, pos.y - camDist/2, pos.z + sin(frameCount * .01) * camDist, pos.x,pos.y,pos.z, 0,1,0);
@@ -37,7 +37,6 @@ class Car
     rotateY(pointing.heading());
     rotateZ(rotZ);
     rotateX(rotX);
-    ambientLight(110, 0, 255);
     shape(car);
     pop();
   }
@@ -47,7 +46,7 @@ class Car
     //drive
     if (keyDown('W'))
     {
-      if (speed < 10)
+      if (speed < 15)
         speed += .10;
     }
 
@@ -65,6 +64,7 @@ class Car
 
     pos.x += pointing.x * speed;
     pos.z -= pointing.y * speed;
+    pos.y -= rotZ * speed;
     FOV = map(speed, 0, 50, 2.5, 2);
   }
 

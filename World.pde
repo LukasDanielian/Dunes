@@ -2,7 +2,7 @@ class World
 {
   HashMap<String, Chunk> chunks;
   float noiseScl = .015;
-  int size = width;
+  int size = 1920;
   int scl = 30;
   int terrainSize = (size/scl) + 1;
   int renderDist = 1;
@@ -45,8 +45,8 @@ class World
       terrain = new float[terrainSize][terrainSize];
       noiseX = x * (noiseScl * (terrainSize-1));
       noiseZ = z * (noiseScl * (terrainSize-1));
-      this.x = x * width;
-      this.z = z * width;
+      this.x = x * size;
+      this.z = z * size;
 
       //Sets terrain for chunk
       for (int row = 0; row < terrainSize; row++)
